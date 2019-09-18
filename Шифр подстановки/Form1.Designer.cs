@@ -197,6 +197,7 @@
             this.EncryptDecryptTransposition.TabIndex = 19;
             this.EncryptDecryptTransposition.Text = "Зашифровать/Расшифровать";
             this.EncryptDecryptTransposition.UseVisualStyleBackColor = true;
+            this.EncryptDecryptTransposition.Click += new System.EventHandler(this.EncryptDecryptTransposition_Click);
             // 
             // InputTransposition
             // 

@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Шифр_подстановки
 {
     public partial class Form1 : Form
     {
-        public Substitution substitution = new Substitution();
+        private Substitution substitution = new Substitution();
+        private Transposition transposition = new Transposition();
 
         public Form1()
         {
@@ -48,6 +42,11 @@ namespace Шифр_подстановки
                 e.Handled = false;
             else
                 e.Handled = true;
+        }
+
+        private void EncryptDecryptTransposition_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
