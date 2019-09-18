@@ -38,8 +38,16 @@
             this.InputText = new System.Windows.Forms.TextBox();
             this.EncryptText = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.DecryptTransposition = new System.Windows.Forms.TextBox();
+            this.EncryptDecryptTransposition = new System.Windows.Forms.Button();
+            this.InputTransposition = new System.Windows.Forms.TextBox();
+            this.EncryptTransposition = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -121,7 +129,7 @@
             this.InputText.Size = new System.Drawing.Size(253, 20);
             this.InputText.TabIndex = 11;
             this.InputText.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputText_KeyPress);
-            this.InputText.Leave += new System.EventHandler(this.InputText_Leave_1);
+            this.InputText.Leave += new System.EventHandler(this.InputText_Leave);
             // 
             // EncryptText
             // 
@@ -132,6 +140,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.DecryptTransposition);
+            this.tabPage2.Controls.Add(this.EncryptDecryptTransposition);
+            this.tabPage2.Controls.Add(this.InputTransposition);
+            this.tabPage2.Controls.Add(this.EncryptTransposition);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -139,6 +154,63 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Шифр перестановки";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(44, 93);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 13);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Расшифрованный текст:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(44, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Зашифрованный текст:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(44, 41);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Исходный текст:";
+            // 
+            // DecryptTransposition
+            // 
+            this.DecryptTransposition.Location = new System.Drawing.Point(191, 86);
+            this.DecryptTransposition.Name = "DecryptTransposition";
+            this.DecryptTransposition.Size = new System.Drawing.Size(253, 20);
+            this.DecryptTransposition.TabIndex = 20;
+            // 
+            // EncryptDecryptTransposition
+            // 
+            this.EncryptDecryptTransposition.Location = new System.Drawing.Point(157, 131);
+            this.EncryptDecryptTransposition.Name = "EncryptDecryptTransposition";
+            this.EncryptDecryptTransposition.Size = new System.Drawing.Size(169, 23);
+            this.EncryptDecryptTransposition.TabIndex = 19;
+            this.EncryptDecryptTransposition.Text = "Зашифровать/Расшифровать";
+            this.EncryptDecryptTransposition.UseVisualStyleBackColor = true;
+            // 
+            // InputTransposition
+            // 
+            this.InputTransposition.Location = new System.Drawing.Point(191, 34);
+            this.InputTransposition.Name = "InputTransposition";
+            this.InputTransposition.Size = new System.Drawing.Size(253, 20);
+            this.InputTransposition.TabIndex = 18;
+            // 
+            // EncryptTransposition
+            // 
+            this.EncryptTransposition.Location = new System.Drawing.Point(191, 60);
+            this.EncryptTransposition.Name = "EncryptTransposition";
+            this.EncryptTransposition.Size = new System.Drawing.Size(253, 20);
+            this.EncryptTransposition.TabIndex = 17;
             // 
             // Form1
             // 
@@ -152,6 +224,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -168,6 +242,13 @@
         private System.Windows.Forms.TextBox InputText;
         private System.Windows.Forms.TextBox EncryptText;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox DecryptTransposition;
+        private System.Windows.Forms.Button EncryptDecryptTransposition;
+        private System.Windows.Forms.TextBox InputTransposition;
+        private System.Windows.Forms.TextBox EncryptTransposition;
     }
 }
 
