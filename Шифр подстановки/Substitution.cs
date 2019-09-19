@@ -1,47 +1,63 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Шифр_подстановки
 {
     public class Substitution
     {
-        private Dictionary<char, string> keyValues = new Dictionary<char, string>(25);
+        private Dictionary<string, string> keyValues = new Dictionary<string, string>(25);
         private int block = 2;
-        private int count = 0;
-        private string alphabet = "abcdefghijklmnopqrstuvwxy";
-
-        private string[] table = {"00","01","02","03","04",
-                                  "10","11","12","13","14",
-                                  "20","21","22","23","24",
-                                  "30","31","32","33","34",
-                                  "40","41","42","43","44"};
+        private int count;
+        private string[] table;
+        private string str;
 
         public int getBlock()
         {
             return block;
         }
 
-        public Dictionary<char, string> CreateTable()
+        public Dictionary<string, string> CreateTable()
         {
-            foreach (var ch in alphabet)
+            try
             {
-                keyValues.Add(ch, table[count]);
-                count++;
+                using (StreamReader streamReader = new StreamReader("Шифр подстановки.txt"))
+                {
+                    while (!streamReader.EndOfStream)
+                    {
+                        string line = streamReader.ReadLine();
+                        table = line.Split(';');
+                        keyValues.Add(table[0], table[1]);
+                    }
+                }
             }
+            catch
+            {
+                throw new FileNotFoundException();
+            }
+
             return keyValues;
         }
 
         public string Encrypt(string text, string EncryptText)
         {
-            string key = "";
+            count = text.Length;
 
             for (int i = 0; i < text.Length; i++)
             {
-                key += text[i];
-                if (key.Length == 2)
+                if(text.Length % block !=0)
                 {
-                    EncryptText += keyValues.Where(x => x.Value == key).FirstOrDefault().Key;
-                    key = "";
+                    text += '0';
+                }
+            }
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                str += text[i];
+                if (str.Length == 2)
+                {
+                    EncryptText += keyValues.Where(x => x.Value == str).FirstOrDefault().Key;
+                    str = "";
                 }
             }
             return EncryptText;
@@ -51,11 +67,17 @@ namespace Шифр_подстановки
         {
             for (int i = 0; i < text.Length; i++)
             {
-                if (text.Contains(keyValues.Where(x => x.Key == text[i]).FirstOrDefault().Key))
+                str += text[i];
+                if (str.Length == 2)
                 {
-                    DecryptText += keyValues.Where(x => x.Key == text[i]).FirstOrDefault().Value;
+                    DecryptText += keyValues.Where(x => x.Key == str).FirstOrDefault().Value;
+                    str = "";
                 }
             }
+
+            if (count != text.Length)
+                DecryptText = DecryptText.Remove(count, 1);
+
             return DecryptText;
         }
     }

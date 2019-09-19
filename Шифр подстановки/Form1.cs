@@ -27,14 +27,6 @@ namespace Шифр_подстановки
             DecryptText.Text = substitution.Decrypt(EncryptText.Text, DecryptText.Text);
         }
 
-        private void InputText_Leave(object sender, EventArgs e)
-        {
-            if (InputText.Text.Length % substitution.getBlock() != 0)
-            {
-                InputText.Text += '0';
-            }
-        }
-
         private void InputText_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -46,7 +38,27 @@ namespace Шифр_подстановки
 
         private void EncryptDecryptTransposition_Click(object sender, EventArgs e)
         {
+            EncryptTransposition.Text = null;
+            DecryptTransposition.Text = null;
+            EncryptTransposition.Text = transposition.Encrypt(InputTransposition.Text, EncryptTransposition.Text);
+            DecryptTransposition.Text = transposition.Decrypt(EncryptTransposition.Text, DecryptTransposition.Text);
+        }
 
+        private void InputTransposition_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            string str = transposition.getAlphabet();
+            var ch = e.KeyChar;
+            bool flag = false;
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (ch == str[i])
+                    flag = true;
+            }
+            if (flag)
+                e.Handled = false;
+            else
+                e.Handled = true;
+            flag = false;
         }
     }
 }
